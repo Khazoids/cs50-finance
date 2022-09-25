@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sold
+{% endblock %}
+
+{% block main %}
+    <div class="alert alert-success" role="alert">
+        Sold!
+    </div>
+    <div class="container py-5 text-center">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-start">Symbol</th>
+                    <th class="text-start">Name</th>
+                    <th class="text-end">Shares</th>
+                    <th class="text-end">Price</th>
+                    <th class="text-end">TOTAL</th>
+                </tr>
+            </thead>
+        </div>
+        <div>
+            <tbody>
+                {% for ownedAll in ownedAll %}
+                    {% if ownedAll["SUM(shares)"] != 0 %}
+                    <tr>
+                        <td class="text-start">{{ownedAll["symbol"]}}</td>
+                        <td class="text-start">{{ownedAll["name"]}}</td>
+                        <td class="text-end">{{ownedAll["shares"]}}</td>
+                        <td class="text-end">{{ownedAll["price"]}}</td>
+                        <td class="text-end">{{ownedAll["total"]}}</td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="border-0 fw-bold text-end" colspan="4">Cash</td>
+                    <td class="border-0 text-end">{{cash}}</td>
+                </tr>
+                <tr>
+                    <td class="border-0 fw-bold text-end" colspan="4">TOTAL</td>
+                    <td class="border-0 text-end">{{totalCash}}</td>
+                </tr>
+            </tfoot>
+        </div>
+        </table>
+{% endblock %}

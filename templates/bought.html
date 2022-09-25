@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <div class="alert alert-success" role="alert">
+        Bought!
+    </div>
+    <div class="container py-5 text-center">
+        <table class="table tablestriped">
+            <thead>
+                <tr>
+                    <th class="text-start">Symbol</th>
+                    <th class="text-start">Name</th>
+                    <th class="text-end">Shares</th>
+                    <th class="text-end">Price</th>
+                    <th class="text-end">TOTAL</th>
+                </tr>
+            </thead>
+        </div>
+        <div>
+            <tbody>
+                {% for purchases in purchases %}
+                    <tr>
+                        <td class="text-start">{{purchases["symbol"]}}</td>
+                        <td class="text-start">{{purchases["name"]}}</td>
+                        <td class="text-end">{{purchases["shares"]}}</td>
+                        <td class="text-end">{{purchases["price"]}}</td>
+                        <td class="text-end">{{purchases["total"]}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+             <tfoot>
+                <tr>
+                    <td class="border-0 fw-bold text-end" colspan="4">Cash</td>
+                    <td class="border-0 text-end">{{cash}}</td>
+                </tr>
+                <tr>
+                    <td class="border-0 fw-bold text-end" colspan="4">TOTAL</td>
+                    <td class="border-0 text-end">{{totalCash}}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+{% endblock %}

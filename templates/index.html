@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+<div class="container py-5 text-center">
+        <table class="table tablestriped">
+            <thead>
+                <tr>
+                    <th class="text-start">Symbol</th>
+                    <th class="text-start">Name</th>
+                    <th class="text-end">Shares</th>
+                    <th class="text-end">Price</th>
+                    <th class="text-end">TOTAL</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for total in total %}
+                    {% if total["SUM(shares)"] != 0 %}
+                    <tr>
+                        <td class="text-start">{{total["symbol"]}}</td>
+                        <td class="text-start">{{total["name"]}}</td>
+                        <td class="text-end">{{total["SUM(shares)"]}}</td>
+                        <td class="text-end">{{total["price"]}}</td>
+                        <td class="text-end">{{total["SUM(total)"]}}</td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td class="border-0 fw-bold text-end" colspan="4">Cash</td>
+                    <td class="border-0 text-end">{{cash}}</td>
+                </tr>
+                <tr>
+                    <td class="border-0 fw-bold text-end" colspan="4">TOTAL</td>
+                    <td class="border-0 text-end">{{totalCash}}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <div class="container py-5 text-center">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-start">Symbol</th>
+                    <th class="text-start">Name</th>
+                    <th class="text-end">Shares</th>
+                    <th class="text-end">Price</th>
+                    <th class="text-end">TOTAL</th>
+                    <th class="text-end">Transacted</th>
+                </tr>
+            </thead>
+        </div>
+
+        <div>
+            <tbody>
+                {% for transactions in transactions %}
+                    <tr>
+                        <td class="text-start">{{transactions["symbol"]}}</td>
+                        <td class="text-start">{{transactions["name"]}}</td>
+                        <td class="text-end">{{transactions["shares"]}}</td>
+                        <td class="text-end">{{transactions["price"]}}</td>
+                        <td class="text-end">{{transactions["total"]}}</td>
+                        <td class="text-end">{{transactions["date"]}} UTC</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+
+
+{% endblock %}
