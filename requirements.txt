@@ -1,5 +1,6 @@
-cs50
-Flask
+cs50~=9.2.2
+Flask~=1.1.2
 Flask-Session
-requests
+requests~=2.24.0
 gunicorn == 20.1.0
+Werkzeug~=1.0.1
